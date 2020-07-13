@@ -19,5 +19,15 @@ html {
   display: grid;
   grid-template-columns: repeat(10, auto);
   grid-gap: 0.1em;
-  max-width: 30em;
+  width: 55%;
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.play {
+  width: 40%;
 }
