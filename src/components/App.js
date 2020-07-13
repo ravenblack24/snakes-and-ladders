@@ -34,26 +34,16 @@ class App extends React.Component {
       playerOnePosition: 0,
       playerTwoPosition: 0,
       isPlayerOneTurn: true,
-      board: [],
+      // board: [],
       message: '',
       gameOver: false,
+      diceRoll: []
     }
 
     this.createBoard = this.createBoard.bind(this);
     this.play = this.play.bind(this);
     this.roll = this.roll.bind(this);
     this.checkSpace = this.checkSpace.bind(this);
-  }
-
-  componentDidMount() {
-    const board = [];
-    for(var i = 100; i>=1; i--) {
-      board.push(this.createBoard(i));
-    }
-
-    this.setState({
-      board
-    })
   }
 
   createBoard(id) {
@@ -63,6 +53,9 @@ class App extends React.Component {
   roll() {
     var die1 = 1+(Math.floor(Math.random() * 6));  
     var die2 = 1+(Math.floor(Math.random() * 6));  
+    this.setState({
+        diceRoll: [die1, die2]
+    }); 
 
     this.play(die1, die2);
   }
@@ -122,15 +115,15 @@ class App extends React.Component {
 
  
   render() {
-    // const board = [];
-    // for(var i = 100; i>=1; i--) {
-    //   board.push(this.createBoard(i));
-    // }
+    const board = [];
+    for(var i = 100; i>=1; i--) {
+      board.push(this.createBoard(i));
+    }
 
     return (
       <div className="container">
         <div className="board">
-          {this.state.board}
+          {board}
         </div>  
         <div className="play">
           <div>
