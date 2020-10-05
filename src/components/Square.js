@@ -1,4 +1,5 @@
 import React from 'react';
+import Counter from './Counter';
 
 export default class Square extends React.Component {
   constructor(props) {
@@ -20,8 +21,14 @@ export default class Square extends React.Component {
 
   render() {
       return (
-        <div className="square" data-playerOneActive={this.state.playerOneActive} data-playerTwoActive={this.state.playerTwoActive}>
-          {this.props.value} 
+        <div className="square">
+          <div className={'number number-'+this.props.value} ></div>
+          {this.state.playerOneActive && (
+            <Counter player="O" />
+          ) }
+          {this.state.playerTwoActive && (
+            <Counter player="X" />
+          ) }
         </div>
       )
     }

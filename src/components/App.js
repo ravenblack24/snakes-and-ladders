@@ -34,7 +34,6 @@ class App extends React.Component {
       playerOnePosition: 0,
       playerTwoPosition: 0,
       isPlayerOneTurn: true,
-      // board: [],
       message: '',
       gameOver: false,
       diceRoll: []
@@ -104,7 +103,14 @@ class App extends React.Component {
   }
 
   checkSpace(playerPosition) {
-    return (actionSquares[playerPosition]) ? playerPosition = actionSquares[playerPosition] : playerPosition;
+    // return (actionSquares[playerPosition]) ? playerPosition = actionSquares[playerPosition] : playerPosition;
+
+    if(actionSquares[playerPosition]) {
+      console.log("action space"); 
+      return playerPosition = actionSquares[playerPosition]
+    }
+    return playerPosition;
+     
   }
 
   updateTurn() {
@@ -112,11 +118,38 @@ class App extends React.Component {
       isPlayerOneTurn: !this.state.isPlayerOneTurn
     });
   }
-
  
   render() {
     const board = [];
-    for(var i = 100; i>=1; i--) {
+
+    for(let i = 100; i>=91; i--) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 81; i<=90; i++) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 80; i>=71; i--) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 61; i<=70; i++) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 60; i>=51; i--) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 41; i<=50; i++) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 40; i>=31; i--) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 21; i<=30; i++) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 20; i>=11; i--) {
+      board.push(this.createBoard(i));
+    }
+    for(let i = 1; i<=10; i++) {
       board.push(this.createBoard(i));
     }
 
@@ -127,7 +160,7 @@ class App extends React.Component {
         </div>  
         <div className="play">
           <div>
-          <h1 >Player One</h1>
+          <h1>Player One</h1>
             <button onClick={this.roll}>Roll</button>
             <p> You rolled: {this.state.diceRoll}</p>
             Board Position: {this.state.playerOnePosition}
